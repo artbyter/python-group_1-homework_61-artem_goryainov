@@ -2,13 +2,13 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import Button from '@material-ui/core/Button';
+
 import Card from '@material-ui/core/Card';
 import Liza from '../../images/Lisa.png'
 import Bart from '../../images/Bart.jpg'
 import Homer from '../../images/Homer.png'
 
-import CardActions from '@material-ui/core/CardActions';
+
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia'
@@ -55,11 +55,7 @@ const styles = theme => ({
     },
 
 
-    cardActions: {
-        [theme.breakpoints.up('sm')]: {
-            paddingBottom: theme.spacing.unit * 2,
-        },
-    },
+
 
 });
 
@@ -128,11 +124,6 @@ function Contacts(props) {
                                     />
                                     <h4>{name.description}</h4>
                                 </CardContent>
-                                <CardActions className={classes.cardActions}>
-                                    <Button fullWidth variant={name.buttonVariant} color="primary">
-                                        {name.buttonText}
-                                    </Button>
-                                </CardActions>
                             </Card>
                         </Grid>
                     ))}

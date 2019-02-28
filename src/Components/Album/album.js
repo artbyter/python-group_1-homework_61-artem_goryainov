@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Button from '@material-ui/core/Button';
+
 import Badge from '@material-ui/core/Badge';
 
 import VoteIcon from '@material-ui/icons/HowToVote';
@@ -44,9 +44,7 @@ const styles = theme => ({
         margin: '0 auto',
         padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
     },
-    heroButtons: {
-        marginTop: theme.spacing.unit * 4,
-    },
+
     layout: {
         width: 'auto',
         marginLeft: theme.spacing.unit * 3,
@@ -81,13 +79,24 @@ const styles = theme => ({
 });
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 const cardPics = ['', Pic01, Pic02, Pic03, Pic04, Pic05, Pic06, Pic07, Pic08, Pic09]
 
 function Album(props) {
     const {classes} = props;
-    const [count, setCount] = useState(0);
-    function handleClick() {
-        alert('You clicked the Chip.'); // eslint-disable-line no-alert
+    const [votes, setVotes] = useState(
+        cards.map(card => {return {id:card, value:0,}
+
+    }))
+
+    function handleClick(card) {
+        setVotes([
+            ...votes,
+            {
+                id: card,
+                value: ++votes[card].value,
+            }
+        ]);
     }
 
     return (
@@ -104,22 +113,9 @@ function Album(props) {
                         </Typography>
                         <Typography variant="h6" align="center" color="textSecondary" paragraph>
                             Если бы Адам вернулся на землю, единственное, что он смог бы узнать, это старые шутки.
-                            <blockquote>Томас Дьюар</blockquote>
+
                         </Typography>
-                        <div className={classes.heroButtons}>
-                            <Grid container spacing={16} justify="center">
-                                <Grid item>
-                                    <Button variant="contained" color="primary">
-                                        Main call to action
-                                    </Button>
-                                </Grid>
-                                <Grid item>
-                                    <Button variant="outlined" color="primary">
-                                        Secondary action
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                        </div>
+                        <blockquote>Томас Дьюар</blockquote>
                     </div>
                 </div>
                 <div className={classNames(classes.layout, classes.cardGrid)}>
@@ -146,13 +142,13 @@ function Album(props) {
                                         <Chip
                                             avatar={<Avatar alt="Natacha" src={Simpsons}/>}
                                             label="Отдай свой голос!"
-                                            onClick={() => setCount(count + 1)}
+                                            onClick={() => handleClick(card-1)}
                                             className={classes.chip}
                                             variant="outlined"
                                         />
-                                        <Badge className={classes.margin} badgeContent={count} color="primary">
-                                        <VoteIcon/>
-                                    </Badge>
+                                        <Badge className={classes.margin} badgeContent={votes[card-1].value} color="primary">
+                                            <VoteIcon/>
+                                        </Badge>
                                     </CardActions>
                                 </Card>
                             </Grid>

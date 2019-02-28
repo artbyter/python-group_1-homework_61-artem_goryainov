@@ -7,8 +7,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ContactsIcon from '@material-ui/icons/Contacts';
 import AboutIcon from '@material-ui/icons/TripOrigin';
 import Typography from '@material-ui/core/Typography';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+
 import {withStyles} from '@material-ui/core/styles';
 
 
